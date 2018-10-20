@@ -4,4 +4,8 @@
         <TargetFramework>netcoreapp2.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FileHelper.Core\FileHelper.Core.csproj" />
+    </ItemGroup>
+
 </Project>
