@@ -17,7 +17,7 @@ namespace FileHelper.Tests.FileHelper.Core.Tests
             }
             catch (InvalidDirectoryException e)
             {
-                Assert.Equal(e.Message, "Please select a directory");
+                Assert.Equal("Please select a directory", e.Message);
             }
         }
 
@@ -34,7 +34,7 @@ namespace FileHelper.Tests.FileHelper.Core.Tests
             }
             catch (InvalidDirectoryException e)
             {
-                Assert.Equal(e.Message, "Invalid directory");
+                Assert.Equal("Invalid directory", e.Message);
             }
         }
 
