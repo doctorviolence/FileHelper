@@ -2,7 +2,7 @@ import axiosInstance from './axios-instance';
 
 class ApiFileSorter {
     sortXmlFile = (file) => {
-        return axiosInstance.post('/filersorter',
+        return axiosInstance.post('/filesorter',
             file,
             {headers: {'Content-Type': 'application/json'}}
         )

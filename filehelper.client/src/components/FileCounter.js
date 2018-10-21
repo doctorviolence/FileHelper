@@ -29,19 +29,22 @@ class FileCounter extends Component {
 
     selectDirectoryHandler = (event) => {
         event.preventDefault();
-
+        this.setState({directory: event.target.value});
     };
 
     submitDirectoryHandler = (event) => {
         event.preventDefault();
-
+        const directory = {
+            directory: this.state.directory
+        };
+        this.retrieveXmlFileCountInDirectory(directory);
     };
 
     retrieveXmlFileCountInDirectory = (dir) => {
         try {
             apiFileCounter.countXmlFiles(dir).then(response => {
-                const files = response.data.files;
-                this.setState({result: files});
+                const data = response.data;
+                this.setState({result: data});
             });
         } catch (e) {
             console.log('Failed to count XML files: ', e);
@@ -55,7 +58,7 @@ class FileCounter extends Component {
                 <FormContainer>
                     <Input type="text" name="counter" placeholder="Select a directory"
                            onChange={this.selectDirectoryHandler}/>
-                    <Button onClick={(event) => this.selectDirectoryHandler(event)}>Submit</Button>
+                    <Button onClick={(event) => this.submitDirectoryHandler(event)}>Submit</Button>
                 </FormContainer>
                 No. of XML files in directory: {result}
             </FileCounterContainer>

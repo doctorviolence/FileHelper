@@ -27,17 +27,22 @@ class FileSorter extends Component {
 
     selectFileHandler = (event) => {
         event.preventDefault();
-
+        this.setState({file: event.target.value});
     };
 
     submitFileHandler = (event) => {
         event.preventDefault();
 
+        const file = {
+            file: this.state.file
+        };
+
+        this.sortXmlFile(file)
     };
 
-    sortXmlFile = (dir) => {
+    sortXmlFile = (file) => {
         try {
-            apiFileSorter.sortXmlFile(dir).then(response => {
+            apiFileSorter.sortXmlFile(file).then(response => {
                 const files = response.data.files;
                 this.setState({result: files});
             });
@@ -50,7 +55,7 @@ class FileSorter extends Component {
         return (
             <FileSorterContainer>
                 <FormContainer>
-                    <Input type="file" name="sorter" placeholder="Select a file" onChange={this.selectFileHandler}/>
+                    <Input type="text" name="sorter" placeholder="Select a file" onChange={this.selectFileHandler}/>
                     <Button onClick={(event) => this.submitFileHandler(event)}>Submit</Button>
                 </FormContainer>
             </FileSorterContainer>

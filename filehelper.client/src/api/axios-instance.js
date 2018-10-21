@@ -1,13 +1,7 @@
-import axiosInstance from './axios-instance';
+import axios from 'axios';
 
-class ApiFileSorter {
-    sortXmlFile = (file) => {
-        return axiosInstance.post('/filecounter',
-            file,
-            {headers: {'Content-Type': 'application/json'}}
-        )
-    };
-}
+const instance = axios.create({
+    baseURL: 'http://localhost:5000/',
+});
 
-const apiFileSorter = new ApiFileSorter();
-export default apiFileSorter;
+export default instance;
